@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MY WEBPAGE</title>
+
+</head>
+
+<body>
+    <h1>Welcome</h1>
+    <p>Date And Time</p>
+    <p id='time'></p>
+    <p id='date'></p>
+    <button type="button" onclick=prt()>Click Here To print page</button>
+    <script>
+        var now = new Date();
+        now.setHours(now.getHours() + 2);
+        var isPM = now.getHours() >= 12;
+        var isMidday = now.getHours() == 12;
+        var result = document.querySelector('#result');
+        var time = [now.getHours() - (isPM && !isMidday ? 12 : 0) + (isPM ? ' PM' : 'AM'),
+            now.getMinutes(),
+            now.getSeconds() || '00'
+        ].join(':')
+
+        var month = now.getMonth();
+        var d = now.getDate();
+        var year = now.getFullYear();
+        var date = [month, d, year].join('/');
+        document.getElementById('time').innerHTML = time;
+        document.getElementById('date').innerHTML = date;
+
+        function prt() {
+            window.print();
+        }
+    </script>
+</body>
+
+</html>
